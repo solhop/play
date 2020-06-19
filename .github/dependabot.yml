@@ -3,14 +3,14 @@ updates:
   - package-ecosystem: npm
     directory: "/www"
     schedule:
-      interval: daily
+      interval: weekly
     open-pull-requests-limit: 10
     reviewers:
       - prateekkumarweb
   - package-ecosystem: cargo
     directory: "/"
     schedule:
-      interval: daily
+      interval: weekly
     open-pull-requests-limit: 10
     reviewers:
       - prateekkumarweb
