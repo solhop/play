@@ -1,15 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SolHOP Playground</title>
   </head>
   <body>
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="../">
+            <img src="logo.png" alt="Logo" />&nbsp;&nbsp;
+            <h1>SolHOP Playground</h1>
+          </a>
+          <span class="navbar-burger burger" data-target="navbarMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenu" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item" href="https://github.com/solhop">GitHub</a>
+            <a class="navbar-item" href="https://solhop.org">About</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <div class="columns is-8 is-variable">
+            <div class="column has-text-left">
+              <div>
+                Test out <a href="https://solhop.org/tools/rsat">rsat</a>, a SAT
+                solver.
+              </div>
+              <div class="field">
+                <label class="label">Input</label>
+                <div class="control">
+                  <textarea class="textarea" rows="15" id="input">
+p cnf 2 3
+1 0
+-1 -2 0
+1 2 0
+</textarea
+                  >
+                </div>
+              </div>
+              <div class="control">
+                <button
+                  type="submit"
+                  class="button is-link has-text-weight-medium is-medium"
+                  onclick="solve()"
+                >
+                  Run solver
+                </button>
+              </div>
+              <div class="field">
+                <label class="label">Output</label>
+                <div class="control">
+                  <textarea class="textarea" id="output" disabled></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <noscript>
       This page contains webassembly and javascript content, please enable
       javascript in your browser.
     </noscript>
-    Coming soon!
     <script src="./bootstrap.js"></script>
   </body>
 </html>

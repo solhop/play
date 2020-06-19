@@ -1,6 +1,11 @@
 import * as wasm from "play";
 
+require('./styles.scss');
+
 wasm.greet();
 
-let input = "p cnf 2 3\n1 0\n-1 2 0\n2 0\n";
-console.log(wasm.sat_solver(input));
+window.solve = function () {
+    let input = document.querySelector("#input");
+    let output = document.querySelector("#output");
+    output.value = wasm.sat_solver(input.value);
+}

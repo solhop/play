@@ -33,7 +33,7 @@ pub fn sat_solver(input: String) -> String {
     let (n_vars, clauses) = if let rsat::parser::Dimacs::Cnf { n_vars, clauses } = parsed {
         (n_vars, clauses)
     } else {
-        panic!("Incorrect input format");
+        return "c Incorrect input format".to_owned();
     };
 
     use rsat::cdcl::*;
