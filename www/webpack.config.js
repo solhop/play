@@ -1,6 +1,6 @@
-const path = require('path');
+const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: "./bootstrap.js",
@@ -10,26 +10,28 @@ module.exports = {
   },
   mode: "development",
   module: {
-    rules: [{
-      test: /\.scss$/,
-      use: [
-        MiniCssExtractPlugin.loader,
-        {
-          loader: 'css-loader'
-        },
-        {
-          loader: 'sass-loader',
-          options: {
-            sourceMap: true,
-          }
-        }
-      ]
-    }]
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
-    new CopyWebpackPlugin({ patterns: [{ from: 'index.html' }] }),
+    new CopyWebpackPlugin({ patterns: [{ from: "index.html" }, { from: "logo.png" }] }),
     new MiniCssExtractPlugin({
-      filename: 'styles.css'
+      filename: "styles.css",
     }),
   ],
 };
