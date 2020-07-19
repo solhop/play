@@ -37,9 +37,11 @@ module.exports = {
     ],
   },
   plugins: [
-    new CopyPlugin([
-      path.resolve(__dirname, "static")
-    ]),
+    new CopyPlugin({
+      patterns: [
+        path.resolve(__dirname, "static")
+      ]
+    }),
     new MiniCssExtractPlugin({
       filename: "css/styles.css",
     }),
