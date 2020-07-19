@@ -10,7 +10,5 @@ jobs:
         run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
       - run: npm test -- --firefox
-
       - run: npm test -- --chrome
-
-      - run: npm test -- --safari
+      # - run: npm test -- --safari # doesn't work
