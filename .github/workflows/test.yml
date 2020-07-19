@@ -6,6 +6,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Install wasm-pack
+        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
       - run: npm test -- --firefox
+
       - run: npm test -- --chrome
+
       - run: npm test -- --safari
