@@ -1,14 +1,22 @@
 const path = require("path");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
+const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+const dist = path.resolve(__dirname, "dist");
+
 module.exports = {
-  entry: "./bootstrap.js",
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "bootstrap.js",
+  mode: "production",
+  entry: {
+    index: "./js/index.js"
   },
-  mode: "development",
+  output: {
+    path: dist,
+    filename: "[name].js"
+  },
+  devServer: {
+    contentBase: dist,
+  },
   module: {
     rules: [
       {
@@ -29,9 +37,14 @@ module.exports = {
     ],
   },
   plugins: [
-    new CopyWebpackPlugin({ patterns: [{ from: "index.html" }, { from: "logo.png" }] }),
+    new CopyPlugin([
+      path.resolve(__dirname, "static")
+    ]),
     new MiniCssExtractPlugin({
-      filename: "styles.css",
+      filename: "css/styles.css",
     }),
-  ],
+    new WasmPackPlugin({
+      crateDirectory: __dirname,
+    }),
+  ]
 };

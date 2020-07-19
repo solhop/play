@@ -1,33 +1,45 @@
-mod utils;
-
 use wasm_bindgen::prelude::*;
+use web_sys::console;
 
-// When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
+// When the `wee_alloc` feature is enabled, this uses `wee_alloc` as the global
 // allocator.
+//
+// If you don't want to use `wee_alloc`, you can safely delete this.
 #[cfg(feature = "wee_alloc")]
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
-#[wasm_bindgen]
-extern "C" {
-    fn alert(s: &str);
+// This is like the `main` function, except for JavaScript.
+#[wasm_bindgen(start)]
+pub fn main_js() -> Result<(), JsValue> {
+    // This provides better error messages in debug mode.
+    // It's disabled in release mode so it doesn't bloat up the file size.
+    #[cfg(debug_assertions)]
+    console_error_panic_hook::set_once();
 
-    #[wasm_bindgen(js_namespace = console, js_name = log)]
-    fn log_str(s: &str);
+    // Your code goes here!
+    console::log_1(&JsValue::from_str("Hello, play!"));
+
+    Ok(())
 }
 
-#[wasm_bindgen]
-pub fn greet() {
-    // Called to log the panic error messages to console.err
-    utils::set_panic_hook();
-    log_str("Hello, play!");
-}
+// #[wasm_bindgen]
+// extern "C" {
+//     fn alert(s: &str);
+
+//     #[wasm_bindgen(js_namespace = console, js_name = log)]
+//     fn log_str(s: &str);
+// }
+
+// #[wasm_bindgen]
+// pub fn greet() {
+//     // Called to log the panic error messages to console.err
+//     utils::set_panic_hook();
+//     log_str("Hello, play!");
+// }
 
 #[wasm_bindgen]
 pub fn sat_solver(input: String) -> String {
-    // Called to log the panic error messages to console.err
-    utils::set_panic_hook();
-
     let mut reader = std::io::BufReader::new(input.as_bytes());
     let parsed = rsat::parser::parse_dimacs_from_buf_reader(&mut reader);
     let (n_vars, clauses) = if let rsat::parser::Dimacs::Cnf { n_vars, clauses } = parsed {
