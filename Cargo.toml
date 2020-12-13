@@ -18,7 +18,7 @@ lto = true
 #default = ["wee_alloc"]
 
 [dependencies]
-rsat = "=0.1.11"
+rsat = "=0.1.12"
 
 # The `wasm-bindgen` crate provides the bare minimum functionality needed
 # to interact with JavaScript.
