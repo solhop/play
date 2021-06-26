@@ -1,6 +1,6 @@
 # SolHOP Playground
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/ba2688ec-69cd-4827-a2d6-973df7e81e4e/deploy-status)](https://app.netlify.com/sites/play-solhop-org/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ba2688ec-69cd-4827-a2d6-973df7e81e4e/deploy-status)](https://app.netlify.com/sites/solhop-play/deploys)
 ![.github/workflows/test.yml](https://github.com/solhop/play/workflows/.github/workflows/test.yml/badge.svg)
 ![.github/workflows/publish.yml](https://github.com/solhop/play/workflows/.github/workflows/publish.yml/badge.svg)
 
